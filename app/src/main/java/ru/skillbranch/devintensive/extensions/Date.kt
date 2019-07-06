@@ -14,12 +14,14 @@ const val MINUTE = 60 * SECOND
 const val HOUR = 60 * MINUTE
 const val DAY = 24 * HOUR
 
-// create static function to apply to some class
+// implement static extension function to format Date with given pattern
 fun Date.format(pattern:String="HH:mm:ss dd.MM.yy"):String {
     val dateFormat = SimpleDateFormat(pattern, Locale("ru"))
     return dateFormat.format(this)
 }
 
+// implement extension Date.add(value, TimeUnits) adding or subtracting value as unit of second TimeUnits value
+// (enum TimeUnits [SECOND, MINUTE, HOUR, DAY]) and return modified Date
 fun Date.add(value:Int, units: TimeUnits = TimeUnits.SECOND) : Date {
 
     var time = this.time
@@ -35,6 +37,7 @@ fun Date.add(value:Int, units: TimeUnits = TimeUnits.SECOND) : Date {
 
     return this
 }
+
 
 fun Date.humanizeDiff(date:Date = Date()): String {
     return "asdf секунд назад"
