@@ -6,16 +6,20 @@ package ru.skillbranch.devintensive.utils
  */
 
 object Utils {
-
+    // 3. Implement method Utils.parseFullName(fullName) with argument containing full user name (null, empty string)
+    // and returning a pair of values Pair(firstName, lastName)
+    // If full name or a part of it is not parsable, return null null or "firstName" null
+    // Examples:
+    // Utils.parseFullName(null) // null null
+    // Utils.parseFullName("") // null null
+    // Utils.parseFullName(" ") // null null
+    // Utils.parseFullName("John") // John null
     fun parseFullName(fullName:String?):Pair<String?, String?> {
-        val parts:List<String>? = fullName?.split(" ")
-
-        // TODO: fix from tests user2 and user3
-        val firstName = parts?.getOrNull(0)
-        val lastName = parts?.getOrNull(1)
-        //TODO("not implemented")
-
-        //return Pair(firstName, lastName)
+        val parts = fullName?.trim()?.split(" ")
+        val firstName = parts?.getOrNull(0)?.ifEmpty { null }
+        val lastName = parts?.getOrNull(1)?.ifEmpty { null }
+        // return Pair(firstName, lastName)
+        // same as:
         return firstName to lastName
     }
 

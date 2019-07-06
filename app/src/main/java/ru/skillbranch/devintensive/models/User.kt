@@ -8,6 +8,8 @@ import java.util.*
  * 28.06.2019 23:45
  */
 
+
+// 1.1. Create data class User with properties.
 data class User (                        // PRIMARY constructor
     val id:String,
     var firstName:String?,
@@ -15,7 +17,7 @@ data class User (                        // PRIMARY constructor
     var avatar:String?,
     var rating:Int = 0,
     var respect:Int = 0,
-    val lastVisit:Date? = null,
+    val lastVisit:Date? = Date(),
     val isOnline:Boolean = false
 ){
 
@@ -33,11 +35,9 @@ data class User (                        // PRIMARY constructor
         lastName = "Doe"
     )
 
-
     init {
-
-        println("It's Alive!\n" +
-                "${if(lastName==="Doe") "His name is $firstName $lastName" else "This is Mr. $firstName $lastName"}\n")
+        println("Create User instance: first = $firstName, last = $lastName")
+                //"${if(lastName==="Doe") "His name is $firstName $lastName" else "This is Mr. $firstName $lastName"}\n")
     }
 
 
@@ -62,16 +62,16 @@ data class User (                        // PRIMARY constructor
 
 
 
-
+    // 1.2. Implement Factory pattern including method makeUser(fullName) where fullName argument is user's full name. Return User class instance.
     companion object Factory {
         private var lastId:Int = -1
 
         fun makeUser(fullName:String?) : User {
             lastId++
-
             val (firstName, lastName) = Utils.parseFullName(fullName)
             return User(id = "$lastId", firstName = firstName, lastName = lastName)
         }
+
     }
 
 
