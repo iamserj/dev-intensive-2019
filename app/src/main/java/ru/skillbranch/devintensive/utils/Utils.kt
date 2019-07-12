@@ -23,13 +23,7 @@ object Utils {
         return firstName to lastName
     }
 
-    fun transliteration(payload: String, divider:String = " "): String {
-        //TODO("not implemented")
-        return "asdf"
-    }
-    /*
 
-     */
     // 6. Implement method Utils.toInitials(firstName lastName) returning first letters in upper case.
     // if one of them is null return the second one, if both null return null
     fun toInitials(firstName: String?, lastName: String?): String? {
@@ -46,4 +40,60 @@ object Utils {
         return "$firstI$lastI".ifEmpty { null }
     }
 
+
+
+    // 7. Implement Utils.transliteration(payload divider) returning latin symbols string
+    fun transliteration(payload: String, divider: String = " "): String {
+        val map = fillTranslitMap()
+        val builder = StringBuilder()
+
+        for (char in payload.trim())
+            builder.append(getTranslChar(char, map))
+
+        return builder.toString().replace(" ", divider)
+    }
+
+    private fun getTranslChar(char: Char, map: HashMap<Char, String>): String {
+        val transl  = map[char.toLowerCase()] ?: char.toString()
+        // capitalize() Returns string copy with uppercased first letter, or the original string, if it's empty or already starts with an upper case.
+        return if (char.isUpperCase() && transl.isNotEmpty()) transl.capitalize() else transl
+    }
+
+    private fun fillTranslitMap():HashMap<Char,String> {
+        val map = hashMapOf<Char,String>()
+        map['а'] = "a"
+        map['б'] = "b"
+        map['в'] = "v"
+        map['г'] = "g"
+        map['д'] = "d"
+        map['е'] = "e"
+        map['ё'] = "e"
+        map['ж'] = "zh"
+        map['з'] = "z"
+        map['и'] = "i"
+        map['й'] = "i"
+        map['к'] = "k"
+        map['л'] = "l"
+        map['м'] = "m"
+        map['н'] = "n"
+        map['о'] = "o"
+        map['п'] = "p"
+        map['р'] = "r"
+        map['с'] = "s"
+        map['т'] = "t"
+        map['у'] = "u"
+        map['ф'] = "f"
+        map['х'] = "h"
+        map['ц'] = "c"
+        map['ч'] = "ch"
+        map['ш'] = "sh"
+        map['щ'] = "sh'"
+        map['ъ'] = ""
+        map['ы'] = "i"
+        map['ь'] = ""
+        map['э'] = "e"
+        map['ю'] = "yu"
+        map['я'] = "ya"
+        return map
+    }
 }
