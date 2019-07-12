@@ -6,14 +6,9 @@ package ru.skillbranch.devintensive.utils
  */
 
 object Utils {
-    // 3. Implement method Utils.parseFullName(fullName) with argument containing full user name (null, empty string)
+    // Implement method Utils.parseFullName(fullName) with argument containing full user name (null, empty string)
     // and returning a pair of values Pair(firstName, lastName)
     // If full name or a part of it is not parsable, return null null or "firstName" null
-    // Examples:
-    // Utils.parseFullName(null) // null null
-    // Utils.parseFullName("") // null null
-    // Utils.parseFullName(" ") // null null
-    // Utils.parseFullName("John") // John null
     fun parseFullName(fullName:String?):Pair<String?, String?> {
         val parts = fullName?.trim()?.split(" ")
         val firstName = parts?.getOrNull(0)?.ifEmpty { null }
@@ -24,8 +19,8 @@ object Utils {
     }
 
 
-    // 6. Implement method Utils.toInitials(firstName lastName) returning first letters in upper case.
-    // if one of them is null return the second one, if both null return null
+    // Implement method Utils.toInitials(firstName lastName) returning first letters in upper case.
+    // If one of them is null return the second one, if both null return null
     fun toInitials(firstName: String?, lastName: String?): String? {
         // orEmpty() Returns the string if it is not null, or the empty string otherwise.
         // getOrNull(index) Returns a character at the given index or null if the index is out of bounds of this char sequence.
@@ -42,7 +37,7 @@ object Utils {
 
 
 
-    // 7. Implement Utils.transliteration(payload divider) returning latin symbols string
+    // Implement Utils.transliteration(payload divider) returning latin symbols string
     fun transliteration(payload: String, divider: String = " "): String {
         val map = fillTranslitMap()
         val builder = StringBuilder()

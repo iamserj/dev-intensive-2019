@@ -9,7 +9,7 @@ import java.util.*
  */
 
 
-// 1.1. Create data class User with properties.
+// Create data class User with properties.
 data class User (                        // PRIMARY constructor
     val id:String,
     var firstName:String?,
@@ -62,7 +62,7 @@ data class User (                        // PRIMARY constructor
 
 
 
-    // 1.2. Implement Factory pattern including method makeUser(fullName) where fullName argument is user's full name. Return User class instance.
+    // Implement Factory pattern including method makeUser(fullName) where fullName argument is user's full name. Return User class instance.
     companion object Factory {
         private var lastId:Int = -1
 
@@ -70,6 +70,8 @@ data class User (                        // PRIMARY constructor
             lastId++
             val (firstName, lastName) = Utils.parseFullName(fullName)
             return User(id = "$lastId", firstName = firstName, lastName = lastName)
+            // same as
+            // return User("$lastId", firstName, lastName)
         }
 
     }
@@ -96,8 +98,6 @@ data class User (                        // PRIMARY constructor
 
         fun build() = User(id, firstName, lastName, avatar, rating, respect, lastVisit, isOnline)
     }
-
-
 
 }
 

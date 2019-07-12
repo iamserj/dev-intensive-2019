@@ -7,7 +7,7 @@ import java.util.*
  * 04.07.2019 23:37
  */
 
-// 2.1. Create abstract class BaseMessage with properties.
+// Create abstract class BaseMessage with properties.
 abstract class BaseMessage(
     val id:String,
     val from:User?,
@@ -15,14 +15,14 @@ abstract class BaseMessage(
     val isIncoming:Boolean = false,
     val date:Date = Date()
 ) {
-    // 2.2. Create abstract method formatMessage returning string with information about:
+    // Create abstract method formatMessage returning string with information about:
     // message ID
     // name of sender/receiver
     // message direction (receive/send)
     // message type (text/image)
     abstract fun formatMessage():String
 
-    // 2.3. Implement AbstractFactory pattern with method
+    // Implement AbstractFactory pattern with method
     // makeMessage(from, chat, date, type, payload, isIncoming = false) with arguments:
     // message owner User
     // destination Chat
