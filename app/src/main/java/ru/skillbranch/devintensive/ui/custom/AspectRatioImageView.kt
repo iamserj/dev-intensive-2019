@@ -3,6 +3,7 @@ package ru.skillbranch.devintensive.ui.custom
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.ImageView
+import ru.skillbranch.devintensive.R
 
 /**
  * @author iamserj
@@ -21,6 +22,16 @@ class AspectRatioImageView(
     private var aspectRatio = DEFAULT_ASPECT_RATIO
 
     init {
-        
+        if (attrs != null) {
+            val a = context.obtainStyledAttributes(attrs, R.styleable.AspectRatioImageView)
+            aspectRatio = a.getFloat(R.styleable.AspectRatioImageView_aspectRatio, DEFAULT_ASPECT_RATIO)
+            a.recycle()
+        }
+    }
+
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        val newHeight = (measuredWidth/aspectRatio).toInt()
+        setMeasuredDimension(measuredWidth, newHeight)
     }
 }
