@@ -10,7 +10,7 @@ import ru.skillbranch.devintensive.R
  * 23.07.2019 0:17
  */
 
-class AspectRatioImageView(
+class AspectRatioImageView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
