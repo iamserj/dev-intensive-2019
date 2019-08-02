@@ -72,5 +72,144 @@
         </RelativeLayout>
 
     </FrameLayout>
+    
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/color_primary_light">
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingTop="@dimen/spacing_normal_16"
+                android:paddingBottom="@dimen/spacing_normal_16">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/font_large_24"
+                    android:text="0"
+                    android:drawableLeft="@drawable/ic_sp_24"
+                    android:drawablePadding="@dimen/spacing_tiny_4"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/font_normal_16"
+                    android:text="@string/profile_label_rating"/>
+
+        </LinearLayout>
+        
+        <view
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/spacing_normal_16"
+                android:layout_marginBottom="@dimen/spacing_normal_16"
+                android:background="@color/color_divider_light"/>
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingTop="@dimen/spacing_normal_16"
+                android:paddingBottom="@dimen/spacing_normal_16">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/font_large_24"
+                    android:text="0"
+                    android:drawableLeft="@drawable/ic_respect_24"
+                    android:drawablePadding="@dimen/spacing_tiny_4"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/font_normal_16"
+                    android:text="@string/profile_label_respect"/>
+
+        </LinearLayout>
+    </LinearLayout>
+    
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_normal_16">
+        
+        <ImageView
+                android:id="@+id/ic_avatar"
+                android:layout_width="@dimen/btn_round_size_40"
+                android:layout_height="@dimen/btn_round_size_40"
+                android:src="@drawable/ic_avatar"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/wr_first_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/ic_avatar"
+                android:layout_marginStart="@dimen/spacing_normal_16">
+
+            <EditText
+                    android:id="@+id/et_first_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Имя"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/ic_avatar"
+                android:layout_marginStart="@dimen/spacing_normal_16"
+                android:layout_below="@id/wr_first_name">
+
+            <EditText
+                    android:id="@+id/et_last_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Фамилия"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+        
+    </RelativeLayout>
+    
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/spacing_normal_16"
+            tools:background="@color/color_accent">
+
+        <ImageView
+                android:layout_width="@dimen/btn_round_size_40"
+                android:layout_height="@dimen/btn_round_size_40"
+                android:src="@drawable/ic_about"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/ic_avatar"
+                android:layout_marginStart="@dimen/spacing_normal_16"
+                android:layout_below="@id/wr_first_name">
+
+            <EditText
+                    android:id="@+id/et_about"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Фамилия"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
