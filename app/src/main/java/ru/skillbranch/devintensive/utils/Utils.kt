@@ -6,10 +6,9 @@ package ru.skillbranch.devintensive.utils
  */
 
 object Utils {
-    // Implement method Utils.parseFullName(fullName) with argument containing full user name (null, empty string)
-    // and returning a pair of values Pair(firstName, lastName)
-    // If full name or a part of it is not parsable, return null null or "firstName" null
-    fun parseFullName(fullName:String?):Pair<String?, String?> {
+    // Utils.parseFullName(fullName) with parameter (null, empty string)
+    // return Pair(firstName, lastName). If fullName or a part of it is not parsable, return <null, null> or <"firstName", null>
+    fun parseFullName(fullName: String?): Pair<String?, String?> {
         val parts = fullName?.trim()?.split(" ")
         val firstName = parts?.getOrNull(0)?.ifEmpty { null }
         val lastName = parts?.getOrNull(1)?.ifEmpty { null }
@@ -18,44 +17,42 @@ object Utils {
         return firstName to lastName
     }
 
-
-    // Implement method Utils.toInitials(firstName lastName) returning first letters in upper case.
-    // If one of them is null return the second one, if both null return null
+    // Utils.toInitials(firstName, lastName) returning first letters in upper case
+    // if one of them is null return the second one, if both null return null
     fun toInitials(firstName: String?, lastName: String?): String? {
-        // orEmpty() Returns the string if it is not null, or the empty string otherwise.
-        // getOrNull(index) Returns a character at the given index or null if the index is out of bounds of this char sequence.
+        // orEmpty() returns the string if it is not null, or the empty string otherwise
+        // getOrNull(index) returns a char at the given index or null if the index is out of bounds of this char sequence
         val firstChar = firstName.orEmpty().trim().getOrNull(0)?.toUpperCase()
         val lastChar = lastName.orEmpty().trim().getOrNull(0)?.toUpperCase()
 
-        // If the expression to the left of Elvis (?:) is not null, the Elvis operator returns it, otherwise it returns the expression to the right.
+        // if the expression to the left of Elvis (?:) !null, Elvis returns it, otherwise returns the expression to the right
         val firstI = firstChar?.toString() ?: ""
         val lastI = lastChar?.toString() ?: ""
 
-        // ifEmpty { expression } returns string if it's not empty or the result of calling expression in curly braces.
+        // ifEmpty { expression } returns string if it's not empty or the result of calling expression in curly braces
         return "$firstI$lastI".ifEmpty { null }
     }
 
-
-
-    // Implement Utils.transliteration(payload divider) returning latin symbols string
+    // Utils.transliteration(payload, divider) returns latin symbols string
     fun transliteration(payload: String, divider: String = " "): String {
         val map = fillTranslitMap()
-        val builder = StringBuilder()
+        val stringBuilder = StringBuilder()
 
-        for (char in payload.trim())
-            builder.append(getTranslChar(char, map))
+        for (char in payload.trim()) {
+            stringBuilder.append(getTranslChar(char, map))
+        }
 
-        return builder.toString().replace(" ", divider)
+        return stringBuilder.toString().replace(" ", divider)
     }
 
     private fun getTranslChar(char: Char, map: HashMap<Char, String>): String {
-        val transl  = map[char.toLowerCase()] ?: char.toString()
-        // capitalize() Returns string copy with uppercased first letter, or the original string, if it's empty or already starts with an upper case.
+        val transl = map[char.toLowerCase()] ?: char.toString()
+        // capitalize() returns string copy with upper-cased first letter, or the original string, if it's empty or already starts with an upper case
         return if (char.isUpperCase() && transl.isNotEmpty()) transl.capitalize() else transl
     }
 
-    private fun fillTranslitMap():HashMap<Char,String> {
-        val map = hashMapOf<Char,String>()
+    private fun fillTranslitMap(): HashMap<Char, String> {
+        val map = hashMapOf<Char, String>()
         map['а'] = "a"
         map['б'] = "b"
         map['в'] = "v"
