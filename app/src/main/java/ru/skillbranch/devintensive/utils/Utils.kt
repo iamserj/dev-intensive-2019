@@ -1,5 +1,8 @@
 package ru.skillbranch.devintensive.utils
 
+import android.content.Context
+import kotlin.math.roundToInt
+
 /**
  * @author iamserj
  * 29.06.2019 1:39
@@ -87,5 +90,17 @@ object Utils {
         map['ю'] = "yu"
         map['я'] = "ya"
         return map
+    }
+
+    fun convertPxToDp(context: Context, px: Int): Int {
+        return (px / context.resources.displayMetrics.density).roundToInt()
+    }
+
+    fun convertDpToPx(context: Context, dp: Float): Int {
+        return (dp * context.resources.displayMetrics.density).roundToInt()
+    }
+
+    fun convertSpToPx(context: Context, sp: Int): Int {
+        return sp * context.resources.displayMetrics.scaledDensity.roundToInt()
     }
 }
